@@ -49,7 +49,7 @@ function MyProfile() {
         className="Modal"
         overlayClassName="Overlay"
       >
-        <button type="button" onClick={closeModal}>
+        <button className="button-close" type="button" onClick={closeModal}>
           X
         </button>
         <h2>Modifier le profil</h2>
