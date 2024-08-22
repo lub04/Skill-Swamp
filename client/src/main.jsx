@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
 import AllUsers from "./pages/AllUsers/AllUsers";
+import UserDetails from "./pages/UserDetails/UserDetails";
 import connexion from "./services/connexion";
 
 const router = createBrowserRouter([
@@ -17,8 +17,20 @@ const router = createBrowserRouter([
         element: <AllUsers />,
         loader: async () => {
           try {
-            const offerTable = await connexion.get("/api/users");
-            return offerTable.data;
+            const userTable = await connexion.get("/api/users");
+            return userTable.data;
+          } catch (error) {
+            throw new Error(error);
+          }
+        },
+      },
+      {
+        path: "utilisateurs/:id",
+        element: <UserDetails />,
+        loader: async ({ params }) => {
+          try {
+            const userDetails = await connexion.get(`/api/users/${params.id}`);
+            return userDetails.data;
           } catch (error) {
             throw new Error(error);
           }
