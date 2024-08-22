@@ -6,7 +6,7 @@ function UserCard({ user }) {
     <Link to="utilisateurs/:id" className="user-card">
       <img src={user.profile_picture} alt="" />
       <div>
-        <h3>{user.username}</h3>
+        <h2>{user.username}</h2>
         <p>{user.skills}</p>
         <small>{user.location}</small>
       </div>

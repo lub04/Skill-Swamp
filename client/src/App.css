@@ -30,7 +30,7 @@
 
   /* Tailles de police en rem */
   --font-size-h1: 2.25rem; /* Titre principal (36px) */
-  --font-size-h2: 1.75rem; /* Sous-titre (28px) */
+  --font-size-h2: 1.5rem; /* Sous-titre (28px) */
   --font-size-body: 1rem; /* Texte principal (16px) */
   --font-size-secondary: 0.875rem; /* Texte secondaire (14px) */
 
@@ -96,7 +96,7 @@ a {
   color: var(--text-primary);
 }
 
-main {
+body {
   background-image: url("./assets/images/abstract-yellow-greeting-wall-texture.jpg");
   background-size: cover;
   background-attachment: fixed;
