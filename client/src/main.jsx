@@ -6,6 +6,7 @@ import App from "./App";
 import AllUsers from "./pages/AllUsers/AllUsers";
 import UserDetails from "./pages/UserDetails/UserDetails";
 import connexion from "./services/connexion";
+import MyProfile from "./pages/MyProfile/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,18 @@ const router = createBrowserRouter([
           try {
             const userDetails = await connexion.get(`/api/users/${params.id}`);
             return userDetails.data;
+          } catch (error) {
+            throw new Error(error);
+          }
+        },
+      },
+      {
+        path: "profil",
+        element: <MyProfile />,
+        loader: async () => {
+          try {
+            const userTable = await connexion.get("/api/users/mine");
+            return userTable.data;
           } catch (error) {
             throw new Error(error);
           }

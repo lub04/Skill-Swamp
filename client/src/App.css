@@ -63,9 +63,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color);
-  color: var(--white);
+  background-color: var(--background-light);
+  color: var(--primary-color);
   border-radius: 5px;
+  border: var(--border-main);
   transition: background-color var(--transition-duration)
     var(--transition-timing-function);
   height: 3rem;

@@ -13,7 +13,7 @@ function Header() {
         <Link className="button" to="utilisateurs">
           Swappers
         </Link>
-        <Link className="button" to="utilisateurs">
+        <Link className="button" to="profil">
           Profil
         </Link>
       </nav>
