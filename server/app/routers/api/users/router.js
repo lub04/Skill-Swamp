@@ -3,12 +3,20 @@ const express = require("express");
 const router = express.Router();
 
 /* ************************************************************************* */
-// Import And Use Routers Here
+// Define Your API Routes Here
 /* ************************************************************************* */
 
-const usersRouter = require("./users/router");
+// Importuser-related actions
+const { browse, read, add } = require("../../../controllers/userActions");
 
-router.use("/users", usersRouter);
+// Route to get a list ofusers
+router.get("/", browse);
+
+// Route to get a specificuser by ID
+router.get("/:id", read);
+
+// Route to add a newuser
+router.post("/", add);
 
 /* ************************************************************************* */
 
