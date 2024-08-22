@@ -14,7 +14,20 @@ const browse = async (req, res, next) => {
     next(err);
   }
 };
+const readOne = async (req, res, next) => {
+  try {
+    // Appel de readMine pour récupérer l'utilisateur connecté
+    const user = await tables.user.readMine();
 
+    if (user == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(user);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
@@ -64,4 +77,5 @@ module.exports = {
   // edit,
   add,
   // destroy,
+  readOne,
 };
