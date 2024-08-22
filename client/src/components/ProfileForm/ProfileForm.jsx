@@ -1,8 +1,10 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import connexion from "../../services/connexion";
 import "./ProfileForm.css";
 
-function ProfileForm({ user }) {
+function ProfileForm({ user, close }) {
+  const navigate = useNavigate();
   const [profil, setProfil] = useState({
     username: user.username,
     email: user.email,
@@ -16,11 +18,19 @@ function ProfileForm({ user }) {
       [name]: value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await connexion.put(`/api/users/${user.id}`, profil);
+      navigate(".", { replace: true });
+      close();
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
-    <form className="profile-form" onSubmit={handleSubmit}>
+    <form className="profile-form" onSubmit={(e) => handleSubmit(e)}>
       <label>
         Pseudo :
         <input

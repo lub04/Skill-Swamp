@@ -53,7 +53,7 @@ function MyProfile() {
           X
         </button>
         <h2>Modifier le profil</h2>
-        <ProfileForm user={user} />
+        <ProfileForm user={user} close={closeModal} />
       </Modal>
     </div>
   );
