@@ -13,13 +13,15 @@ function UserDetails() {
           <small>{user.location}</small>
         </div>
         <div className="name-bio">
-          <h1>{user.username}</h1>
+          <h2>{user.username}</h2>
           <p>{user.bio}</p>
         </div>
       </section>
       <section className="skills">
         {skills.map((skill) => (
-          <p key={skill}>{skill}</p>
+          <p className="skill" key={skill}>
+            {skill}
+          </p>
         ))}
       </section>
     </div>

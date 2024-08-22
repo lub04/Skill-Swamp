@@ -1,0 +1,31 @@
+header {
+  background-image: url("../../assets/images/pexels-marek-piwnicki-3907296-26653522.jpg");
+  background-size: cover;
+  background-position: 10%;
+  height: 15rem;
+  border-bottom: 1px solid var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-left: 5rem;
+  }
+  .title-logo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30rem;
+    height: 100%;
+
+    h1 {
+      width: 18rem;
+    }
+    img {
+      width: 22rem;
+      max-height: 100%;
+    }
+  }
+}

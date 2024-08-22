@@ -1,10 +1,14 @@
+@font-face {
+  font-family: "bouncy";
+  src: url(./assets/fonts/UrbanJungleDEMO.otf);
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 
   /* Couleur principales */
-  --primary-color: #4caf50; /* Vert nature */
+  --primary-color: #029707; /* Vert nature */
   --secondary-color: #ffc107; /* Jaune vif */
   --tertiary-color: #03a9f4; /* Bleu clair */
 
@@ -29,7 +33,7 @@
   --font-secondary: "Roboto", sans-serif; /* Pour le corps de texte */
 
   /* Tailles de police en rem */
-  --font-size-h1: 2.25rem; /* Titre principal (36px) */
+  --font-size-h1: 5rem; /* Titre principal (36px) */
   --font-size-h2: 1.5rem; /* Sous-titre (28px) */
   --font-size-body: 1rem; /* Texte principal (16px) */
   --font-size-secondary: 0.875rem; /* Texte secondaire (14px) */
@@ -55,24 +59,31 @@
   --border-radius-circle: 50%;
 }
 
-button {
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--primary-color);
   color: var(--white);
   border-radius: 5px;
   transition: background-color var(--transition-duration)
     var(--transition-timing-function);
+  height: 3rem;
+  font-size: 1.5rem;
+  padding: 1rem;
 }
 
-button:hover {
+.button:hover {
   background-color: var(--secondary-color);
 }
 
 h1 {
-  font-family: var(--font-primary);
+  font-family: "bouncy";
   font-size: var(--font-size-h1);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-normal);
   letter-spacing: var(--letter-spacing-normal);
+  color: var(--secondary-color);
 }
 
 h2 {
