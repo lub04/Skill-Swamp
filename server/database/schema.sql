@@ -165,39 +165,39 @@ INSERT INTO UserSkills (user_id, skill_id, level, experience_years) VALUES
 (5, 14, 'Avancé', 10); /* Paul Brun -> Rédaction Technique */
 
 -- Jean Dupont (User 1) compétences supplémentaires
-INSERT INTO UserSkills (user_id, skill_id, level, experience_years, created_at, updated_at)
+INSERT INTO UserSkills (user_id, skill_id, level, experience_years)
 VALUES
-(1, 3, 'Intermédiaire', 3, NOW(), NOW()), -- Cybersécurité
-(1, 5, 'Avancé', 7, NOW(), NOW()); -- Bases de Données
+(1, 3, 'Intermédiaire', 3), -- Cybersécurité
+(1, 5, 'Avancé', 7); -- Bases de Données
 
 -- Marie Durand (User 2) compétences supplémentaires
-INSERT INTO UserSkills (user_id, skill_id, level, experience_years, created_at, updated_at)
+INSERT INTO UserSkills (user_id, skill_id, level, experience_years)
 VALUES
-(2, 9, 'Expert', 12, NOW(), NOW()), -- Traduction
-(2, 8, 'Intermédiaire', 4, NOW(), NOW()); -- Chinois
+(2, 9, 'Expert', 12), -- Traduction
+(2, 8, 'Intermédiaire', 4); -- Chinois
 
 -- Luc Martin (User 3) compétences supplémentaires
-INSERT INTO UserSkills (user_id, skill_id, level, experience_years, created_at, updated_at)
+INSERT INTO UserSkills (user_id, skill_id, level, experience_years)
 VALUES
-(3, 1, 'Expert', 10, NOW(), NOW()), -- Développement Web
-(3, 2, 'Avancé', 6, NOW(), NOW()), -- Intelligence Artificielle
-(3, 5, 'Intermédiaire', 4, NOW(), NOW()); -- Bases de Données
+(3, 1, 'Expert', 10), -- Développement Web
+(3, 2, 'Avancé', 6), -- Intelligence Artificielle
+(3, 5, 'Intermédiaire', 4); -- Bases de Données
 
 -- Sophie Legrand (User 4) compétences supplémentaires
-INSERT INTO UserSkills (user_id, skill_id, level, experience_years, created_at, updated_at)
+INSERT INTO UserSkills (user_id, skill_id, level, experience_years)
 VALUES
-(4, 12, 'Avancé', 6, NOW(), NOW()), -- Illustration
-(4, 13, 'Intermédiaire', 4, NOW(), NOW()); -- Écriture Créative
+(4, 12, 'Avancé', 6), -- Illustration
+(4, 13, 'Intermédiaire', 4); -- Écriture Créative
 
 -- Paul Brun (User 5) compétences supplémentaires
-INSERT INTO UserSkills (user_id, skill_id, level, experience_years, created_at, updated_at)
+INSERT INTO UserSkills (user_id, skill_id, level, experience_years)
 VALUES
-(5, 15, 'Expert', 15, NOW(), NOW()), -- Édition
-(5, 14, 'Avancé', 10, NOW(), NOW()); -- Rédaction Technique
+(5, 15, 'Expert', 15), -- Édition
+(5, 14, 'Avancé', 10); -- Rédaction Technique
 
 -- Vérification et insertion de catégories manquantes
 INSERT INTO SkillCategories (skill_id, category_id)
-VALUES 
+VALUES
 (6, 2), -- Anglais -> Langues (Déjà existant)
 (7, 2), -- Espagnol -> Langues (Déjà existant)
 (8, 2), -- Chinois -> Langues (Déjà existant)
@@ -210,7 +210,7 @@ VALUES
 (15, 4); -- Édition -> Littérature (Déjà existant)
 
 INSERT INTO Credits (user_id, balance)
-VALUES 
+VALUES
 (1, 100.00), -- Solde initial de 100.00 pour Jean Dupont
 (2, 150.00), -- Solde initial de 150.00 pour Marie Durand
 (3, 200.00), -- Solde initial de 200.00 pour Luc Martin
