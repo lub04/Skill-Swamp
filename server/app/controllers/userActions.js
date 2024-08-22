@@ -66,7 +66,21 @@ const add = async (req, res, next) => {
     next(err);
   }
 };
+const edit = async (req, res, next) => {
+  // Extract the user data from the request body and params
+  const user = { ...req.body, id: req.params.id };
 
+  try {
+    // Update the user in the database
+    await tables.user.update(user);
+
+    // Respond with HTTP 204 (No Content)
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -74,7 +88,7 @@ const add = async (req, res, next) => {
 module.exports = {
   browse,
   read,
-  // edit,
+  edit,
   add,
   // destroy,
   readOne,

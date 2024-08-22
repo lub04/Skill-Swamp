@@ -12,6 +12,7 @@ const {
   read,
   add,
   readOne,
+  edit,
 } = require("../../../controllers/userActions");
 
 router.get("/mine", readOne);
@@ -23,6 +24,8 @@ router.get("/:id", read);
 
 // Route to add a newuser
 router.post("/", add);
+
+router.put("/:id", edit);
 
 /* ************************************************************************* */
 

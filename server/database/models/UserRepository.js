@@ -51,6 +51,14 @@ class UserRepository extends AbstractRepository {
     return rows;
   }
 
+  async update(user) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET username = ?, email = ?, bio = ?, location = ? where id = ?`,
+      [user.username, user.email, user.bio, user.location, user.id]
+    );
+    return result;
+  }
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing user
 
