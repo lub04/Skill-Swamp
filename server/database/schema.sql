@@ -7,7 +7,8 @@ CREATE TABLE Users (
     bio TEXT,
     location VARCHAR(255),
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_connected BOOLEAN DEFAULT false
 );
 
 CREATE TABLE Skills (
@@ -111,6 +112,8 @@ INSERT INTO Users (username, email, password_hash, profile_picture, bio, locatio
 'Toulouse, France'),
 ('paul_brun', 'paul.brun@example.com', 'hashed_password5', 'https://randomuser.me/api/portraits/men/41.jpg', 'Paul Brun est un écrivain et historien avec une passion pour les récits captivants et les faits historiques. Avec plusieurs livres publiés à son actif, Paul a su se faire un nom dans le monde littéraire grâce à son style d\'écriture clair et engageant. Il est également un conférencier recherché pour ses connaissances approfondies sur des sujets allant de l\'histoire médiévale à l\'évolution de la pensée moderne. En plus de ses activités littéraires, Paul est un fervent lecteur et collectionneur de livres anciens. Il passe également beaucoup de temps à voyager pour découvrir les lieux historiques qu\'il décrit dans ses œuvres, apportant ainsi une authenticité unique à ses récits.', 
 'Bordeaux, France');
+INSERT INTO Users (username, email, password_hash, profile_picture, bio, location, is_connected ) VALUES
+('Lubin', 'lubin@example.com', 'hashed_password','https://media.licdn.com/dms/image/v2/D4E03AQFxdh1KYPWTKw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710069703213?e=1729728000&v=beta&t=1wDcQWGmCOxFL-7i3sBsTa9UZj2tOsfqh1x5p5tsVFY', 'Lubin est un développeur passionné par la technologie. Il possède une solide expérience en développement web et en intelligence artificielle. En plus de ses compétences techniques, Lubin s’intéresse aussi à la cybersécurité, où il commence à acquérir de l’expérience. Il est motivé par l’envie d’apprendre et de partager ses connaissances avec la communauté.', 'Bordeaux - France', true);
 
 INSERT INTO Categories (name, description) VALUES
 ('Informatique', 'Tout ce qui concerne les technologies de l\'information, le développement de logiciels, l\'intelligence artificielle, et la sécurité informatique.'),
@@ -216,3 +219,12 @@ VALUES
 (3, 200.00), -- Solde initial de 200.00 pour Luc Martin
 (4, 120.00), -- Solde initial de 120.00 pour Sophie Legrand
 (5, 180.00); -- Solde initial de 180.00 pour Paul Brun
+
+INSERT INTO UserSkills (user_id, skill_id, level, experience_years)
+VALUES 
+(6, 1, 'Avancé', 5),  -- Lubin -> Développement Web
+(6, 2, 'Intermédiaire', 3), -- Lubin -> Intelligence Artificielle
+(6, 3, 'Débutant', 1);  -- Lubin -> Cybersécurité
+
+INSERT INTO Credits (user_id, balance)
+VALUES (6, 150.00); -- Solde initial de 150.00 crédits pour Lubin

@@ -13,6 +13,9 @@ function Header() {
         <Link className="button" to="utilisateurs">
           Swappers
         </Link>
+        <Link className="button" to="utilisateurs">
+          Profil
+        </Link>
       </nav>
       <div className="title-logo">
         <h1>Skill Swap</h1>
