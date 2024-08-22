@@ -1,9 +1,10 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
     <main>
-      <h1>lubin</h1>
+      <Outlet />
     </main>
   );
 }

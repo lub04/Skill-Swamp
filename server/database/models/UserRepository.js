@@ -36,7 +36,7 @@ class UserRepository extends AbstractRepository {
   async readAll() {
     // Execute the SQL SELECT query to retrieve all users from the "user" table
     const [rows] = await this.database.query(
-      `SELECT u.id, u.username, u.email, u.profile_picture, u.bio, u.location, u.created_at, u.updated_at, GROUP_CONCAT (CONCAT(s.name, ": ", s.description) SEPARATOR ', ') AS skills FROM ${this.table} as u inner join userskills as us on u.id = us.user_id inner join skills as s on s.id = us.skill_id group by u.id`
+      `SELECT u.id, u.username, u.email, u.profile_picture, u.bio, u.location, u.created_at, u.updated_at, GROUP_CONCAT(s.name SEPARATOR ', ') AS skills FROM ${this.table} as u inner join userskills as us on u.id = us.user_id inner join skills as s on s.id = us.skill_id group by u.id`
     );
 
     // Return the array of users

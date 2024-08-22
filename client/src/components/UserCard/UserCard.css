@@ -1,0 +1,23 @@
+.user-card {
+  position: relative;
+  border: var(--border-secondary);
+  border-radius: var(--border-radius-medium);
+
+  width: 22%;
+  height: 28rem;
+  background-color: var(--background-light);
+  img {
+    width: 100%;
+  }
+  div {
+    padding: 1rem;
+    p {
+      height: 3.6rem;
+      overflow: scroll;
+    }
+    small {
+      position: absolute;
+      bottom: 1rem;
+    }
+  }
+}
