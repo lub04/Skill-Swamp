@@ -9,6 +9,7 @@
   border-radius: var(--border-radius-small);
   .button-close {
     border: none;
+    font-size: 1.2rem;
     background-color: transparent;
     margin: 0.5rem 0 0 97%;
     cursor: pointer;

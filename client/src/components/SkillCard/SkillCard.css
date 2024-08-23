@@ -1,0 +1,52 @@
+.skills {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  .skill {
+    width: 40%;
+    border-radius: var(--border-radius-medium);
+    background-color: rgba(250, 250, 250);
+    .button-skill {
+      width: 100%;
+      background-color: transparent;
+      border-radius: var(--border-radius-medium);
+      border: none;
+      height: 3rem;
+    }
+  }
+}
+
+:has(.button-skill:hover) > .button-skill:not(:hover) {
+  transform: scale(0.9);
+  opacity: 0.7;
+}
+.button-skill:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.button-skill {
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
+}
+:has(.skill:hover) > .skill:not(:hover) {
+  transform: scale(0.9);
+  opacity: 0.7;
+}
+.skill:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  outline: var(--border-main);
+  cursor: pointer;
+}
+
+.skill {
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
+}

@@ -1,9 +1,28 @@
 import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import SkillCard from "../../components/SkillCard/SkillCard";
+
+import connexion from "../../services/connexion";
 import "./UserDetails.css";
 
 function UserDetails() {
   const user = useLoaderData();
-  const skills = user.skills.split(";");
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await connexion.get(`api/skills?id=${user.id}`);
+        setSkills(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchSkills();
+  }, [user.id]);
+
   return (
     <div className="details-user">
       <section className="identity-contact">
@@ -19,9 +38,7 @@ function UserDetails() {
       </section>
       <section className="skills">
         {skills.map((skill) => (
-          <p className="skill" key={skill}>
-            {skill}
-          </p>
+          <SkillCard key={skill.id} skill={skill} />
         ))}
       </section>
     </div>

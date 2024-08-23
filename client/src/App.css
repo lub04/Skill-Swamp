@@ -113,3 +113,34 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+
+.Modal-skill {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  right: 30%;
+  bottom: 15%;
+  background-image: url("./assets/images/abstract-yellow-greeting-wall-texture.jpg");
+  background-size: cover;
+  border-radius: var(--border-radius-small);
+  z-index: 15;
+  h2 {
+    text-align: center;
+  }
+}
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background-light);
+}
+
+.button-close {
+  border: none;
+  font-size: 1.2rem;
+  background-color: transparent;
+  margin: 0.5rem 0 0 97%;
+  cursor: pointer;
+}
