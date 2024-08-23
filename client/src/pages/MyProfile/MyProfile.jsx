@@ -64,7 +64,11 @@ function MyProfile() {
         {skills.map((skill) => (
           <SkillCard key={skill.id} skill={skill} />
         ))}
-        <button type="button" className="button" onClick={openAddSkillModal}>
+        <button
+          type="button"
+          className="button button-add-skill"
+          onClick={openAddSkillModal}
+        >
           Ajouter une compétence
         </button>
       </section>
