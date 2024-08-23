@@ -35,7 +35,7 @@ class UserRepository extends AbstractRepository {
 
   async readMine() {
     const [rows] = await this.database.query(
-      `SELECT u.id, u.username, u.email, u.profile_picture, u.bio, u.location, u.created_at, u.updated_at, GROUP_CONCAT(CONCAT(s.name, ': ', s.description) SEPARATOR '; ') AS skills FROM ${this.table} AS u INNER JOIN UserSkills AS us ON u.id = us.user_id INNER JOIN Skills AS s ON s.id = us.skill_id WHERE u.is_connected = 1 GROUP BY u.id;`
+      `SELECT u.id, u.username, u.email, u.profile_picture, u.bio, u.location, u.created_at, u.updated_at, u.is_connected FROM ${this.table} AS u WHERE u.is_connected = 1 ;`
     );
 
     return rows[0];

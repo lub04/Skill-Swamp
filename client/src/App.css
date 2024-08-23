@@ -119,7 +119,7 @@ body {
   top: 30%;
   left: 30%;
   right: 30%;
-  bottom: 35%;
+  bottom: 25%;
   background-color: rgb(255, 255, 255);
   border: var(--border-secondary);
   border-radius: var(--border-radius-small);
@@ -162,4 +162,7 @@ body {
   right: 0;
   bottom: 0;
   background-color: var(--background-light);
+}
+.button-delete {
+  margin: auto;
 }

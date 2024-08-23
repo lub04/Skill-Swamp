@@ -51,7 +51,7 @@ function MyProfile() {
       <section className="identity-contact">
         <div className="img-contact">
           <img src={user.profile_picture} alt={user.username} />
-          <small>{user.email}</small>
+          <p>{user.email}</p>
           <small>{user.location}</small>
         </div>
         <div className="name-bio">
@@ -61,14 +61,18 @@ function MyProfile() {
       </section>
 
       <section className="skills">
-        {skills.map((skill) => (
-          <SkillCard
-            key={skill.id}
-            skill={skill}
-            setSkills={setSkills}
-            user={user}
-          />
-        ))}
+        {skills.length !== 0 ? (
+          skills.map((skill) => (
+            <SkillCard
+              key={skill.id}
+              skill={skill}
+              setSkills={setSkills}
+              user={user}
+            />
+          ))
+        ) : (
+          <h2>Vous n'avez pas de compétences à afficher</h2>
+        )}
       </section>
       <div className="button-box">
         <button type="button" className="button" onClick={openAddSkillModal}>

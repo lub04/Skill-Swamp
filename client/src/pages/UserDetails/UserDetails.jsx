@@ -28,7 +28,7 @@ function UserDetails() {
       <section className="identity-contact">
         <div className="img-contact">
           <img src={user.profile_picture} alt={user.username} />
-          <small>{user.email}</small>
+          <p>{user.email}</p>
           <small>{user.location}</small>
         </div>
         <div className="name-bio">
@@ -38,7 +38,7 @@ function UserDetails() {
       </section>
       <section className="skills">
         {skills.map((skill) => (
-          <SkillCard key={skill.id} skill={skill} />
+          <SkillCard key={skill.id} skill={skill} user={user} />
         ))}
       </section>
     </div>

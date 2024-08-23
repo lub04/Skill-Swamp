@@ -61,9 +61,17 @@ function SkillCard({ skill, setSkills, user }) {
         </h2>
         <p>{skill.description}</p>
         <p>Experience : {skill.experience_years} ans</p>
-        <button type="button" className="button" onClick={handleDelete}>
-          Delete
-        </button>
+        {user.is_connected ? (
+          <button
+            type="button"
+            className="button button-delete"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        ) : (
+          ""
+        )}
       </Modal>
     </div>
   );
