@@ -1,15 +1,31 @@
 /* eslint-disable react/jsx-no-bind */
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 
+import connexion from "../../services/connexion";
 import "./MyProfile.css";
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
+import SkillCard from "../../components/SkillCard/SkillCard";
 
 Modal.setAppElement("#root");
 function MyProfile() {
   const user = useLoaderData();
-  const skills = user.skills.split(";");
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await connexion.get(`api/skills?id=${user.id}`);
+        setSkills(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchSkills();
+  }, [user.id]);
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -34,9 +50,7 @@ function MyProfile() {
       </section>
       <section className="skills">
         {skills.map((skill) => (
-          <p className="skill" key={skill}>
-            {skill}
-          </p>
+          <SkillCard key={skill.id} skill={skill} />
         ))}
       </section>
       <button type="button" className="button" onClick={openModal}>
