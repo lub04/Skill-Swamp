@@ -10,6 +10,10 @@ const usersRouter = require("./users/router");
 
 router.use("/users", usersRouter);
 
+const skillsRouter = require("./skills/router");
+
+router.use("/skills", skillsRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;
