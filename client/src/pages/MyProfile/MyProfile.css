@@ -7,13 +7,6 @@
   background-image: url(../../assets/images/abstract-yellow-greeting-wall-texture.jpg);
   background-size: cover;
   border-radius: var(--border-radius-small);
-  .button-close {
-    border: none;
-    font-size: 1.2rem;
-    background-color: transparent;
-    margin: 0.5rem 0 0 97%;
-    cursor: pointer;
-  }
   h2 {
     text-align: center;
   }

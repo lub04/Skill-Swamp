@@ -56,10 +56,18 @@ const add = async (req, res, next) => {
   const skill = req.body;
 
   try {
-    // Insert the skill into the database
+    // Insert the user into the database
     const insertId = await tables.skill.create(skill);
+    const userSkill = {
+      skill_id: insertId,
+      user_id: skill.user_id, // Utilisez l'ID de l'utilisateur nouvellement créé
+      level: skill.level, // Assurez-vous que les champs existent dans 'skill'
+      experience_years: skill.experience_years, // Assurez-vous que les champs existent dans 'skill'
+    };
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted skill
+    // Insérer le userSkill dans la base de données
+    await tables.userSkill.create(userSkill);
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted user
     res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
