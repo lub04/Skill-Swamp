@@ -13,6 +13,7 @@ const {
   add,
   readOne,
   edit,
+  destroy,
 } = require("../../../controllers/skillActions");
 
 router.get("/mine", readOne);
@@ -26,6 +27,8 @@ router.get("/:id", read);
 router.post("/", add);
 
 router.put("/:id", edit);
+
+router.delete("/:id", destroy);
 
 /* ************************************************************************* */
 

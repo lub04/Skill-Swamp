@@ -26,7 +26,7 @@ CREATE TABLE UserSkills (
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (skill_id) REFERENCES Skills(id)
+    FOREIGN KEY (skill_id) REFERENCES Skills(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Transactions (
@@ -97,7 +97,7 @@ CREATE TABLE SkillCategories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     skill_id INT NOT NULL,
     category_id INT NOT NULL,
-    FOREIGN KEY (skill_id) REFERENCES Skills(id),
+    FOREIGN KEY (skill_id) REFERENCES Skills(id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES Categories(id)
 );
 

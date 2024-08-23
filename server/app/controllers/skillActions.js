@@ -89,6 +89,19 @@ const edit = async (req, res, next) => {
     next(err);
   }
 };
+
+const destroy = async (req, res, next) => {
+  try {
+    // Delete the program from the database
+    await tables.skill.delete(req.params.id);
+
+    // Respond with HTTP 204 (No Content)
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -98,6 +111,6 @@ module.exports = {
   read,
   edit,
   add,
-  // destroy,
+  destroy,
   readOne,
 };
