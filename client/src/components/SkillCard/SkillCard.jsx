@@ -1,9 +1,11 @@
 import { useState } from "react";
+
 import Modal from "react-modal";
 
+import connexion from "../../services/connexion";
 import "./SkillCard.css";
 
-function SkillCard({ skill }) {
+function SkillCard({ skill, setSkills, user }) {
   const [modalState, setModalState] = useState({});
 
   const openModal = (skillId) => {
@@ -19,6 +21,18 @@ function SkillCard({ skill }) {
       [skillId]: false,
     }));
   };
+  const handleDelete = async () => {
+    try {
+      await connexion.delete(`/api/skills/${skill.id}`);
+      const response = await connexion.get(`/api/skills?id=${user.id}`);
+      setSkills(response.data);
+
+      closeModal(skill.id);
+    } catch (error) {
+      console.error("Erreur lors de la suppression du produit:", error);
+    }
+  };
+
   return (
     <div className="skill">
       <button
@@ -47,6 +61,9 @@ function SkillCard({ skill }) {
         </h2>
         <p>{skill.description}</p>
         <p>Experience : {skill.experience_years} ans</p>
+        <button type="button" className="button" onClick={handleDelete}>
+          Delete
+        </button>
       </Modal>
     </div>
   );

@@ -62,7 +62,12 @@ function MyProfile() {
 
       <section className="skills">
         {skills.map((skill) => (
-          <SkillCard key={skill.id} skill={skill} />
+          <SkillCard
+            key={skill.id}
+            skill={skill}
+            setSkills={setSkills}
+            user={user}
+          />
         ))}
       </section>
       <div className="button-box">
