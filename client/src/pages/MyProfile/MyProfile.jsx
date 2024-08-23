@@ -7,11 +7,15 @@ import connexion from "../../services/connexion";
 import "./MyProfile.css";
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import SkillCard from "../../components/SkillCard/SkillCard";
+import SkillForm from "../../components/SkillForm/SkillForm";
 
 Modal.setAppElement("#root");
+
 function MyProfile() {
   const user = useLoaderData();
   const [skills, setSkills] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [addSkillModalIsOpen, setAddSkillModalIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -26,8 +30,6 @@ function MyProfile() {
     fetchSkills();
   }, [user.id]);
 
-  const [modalIsOpen, setIsOpen] = useState(false);
-
   function openModal() {
     setIsOpen(true);
   }
@@ -35,6 +37,15 @@ function MyProfile() {
   function closeModal() {
     setIsOpen(false);
   }
+
+  function openAddSkillModal() {
+    setAddSkillModalIsOpen(true);
+  }
+
+  function closeAddSkillModal() {
+    setAddSkillModalIsOpen(false);
+  }
+
   return (
     <div className="details-user">
       <section className="identity-contact">
@@ -48,18 +59,28 @@ function MyProfile() {
           <p>{user.bio}</p>
         </div>
       </section>
+
       <section className="skills">
         {skills.map((skill) => (
           <SkillCard key={skill.id} skill={skill} />
         ))}
+        <button type="button" className="button" onClick={openAddSkillModal}>
+          Ajouter une compétence
+        </button>
       </section>
-      <button type="button" className="button" onClick={openModal}>
+
+      <button
+        type="button"
+        className="button button-add-skill"
+        onClick={openModal}
+      >
         Modifier le profil
       </button>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        contentLabel="Example Modal"
+        contentLabel="Modifier le profil"
         className="Modal"
         overlayClassName="Overlay"
       >
@@ -68,6 +89,28 @@ function MyProfile() {
         </button>
         <h2>Modifier le profil</h2>
         <ProfileForm user={user} close={closeModal} />
+      </Modal>
+
+      <Modal
+        isOpen={addSkillModalIsOpen}
+        onRequestClose={closeAddSkillModal}
+        contentLabel="Ajouter une compétence"
+        className="Modal"
+        overlayClassName="Overlay"
+      >
+        <button
+          className="button-close button-add-skill"
+          type="button"
+          onClick={closeAddSkillModal}
+        >
+          X
+        </button>
+        <h2>Ajouter une compétence</h2>
+        <SkillForm
+          close={closeAddSkillModal}
+          id={user.id}
+          setSkills={setSkills}
+        />
       </Modal>
     </div>
   );
