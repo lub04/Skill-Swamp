@@ -4,8 +4,7 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
-  height: 45rem;
+  gap: 2rem;
   background-color: var(--background-light);
   border-radius: var(--border-radius-medium);
   .identity-contact {
@@ -14,7 +13,7 @@
     .img-contact {
       display: flex;
       flex-direction: column;
-      width: 35%;
+      width: 30%;
       img {
         width: 100%;
       }

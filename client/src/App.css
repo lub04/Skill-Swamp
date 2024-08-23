@@ -116,10 +116,10 @@ body {
 
 .Modal-skill {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 30%;
   right: 30%;
-  bottom: 15%;
+  bottom: 35%;
   background-color: rgb(255, 255, 255);
   border: var(--border-secondary);
   border-radius: var(--border-radius-small);
@@ -133,6 +133,28 @@ body {
     text-align: center;
   }
 }
+
+.button-close {
+  border: none;
+  font-size: 1.2rem;
+  background-color: transparent;
+  margin: 0.5rem 0 0 96%;
+  cursor: pointer;
+}
+
+.Modal {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  right: 10%;
+  bottom: 5%;
+  background-image: url(./assets/images/abstract-yellow-greeting-wall-texture.jpg);
+  background-size: cover;
+  border-radius: var(--border-radius-small);
+  h2 {
+    text-align: center;
+  }
+}
 .Overlay {
   position: fixed;
   top: 0;
@@ -140,12 +162,4 @@ body {
   right: 0;
   bottom: 0;
   background-color: var(--background-light);
-}
-
-.button-close {
-  border: none;
-  font-size: 1.2rem;
-  background-color: transparent;
-  margin: 0.5rem 0 0 97%;
-  cursor: pointer;
 }
