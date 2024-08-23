@@ -4,7 +4,7 @@ class SkillRepository extends AbstractRepository {
   constructor() {
     // Call the constructor of the parent class (AbstractRepository)
     // and pass the table name "skill" as configuration
-    super({ table: "skill" });
+    super({ table: "skills" });
   }
 
   // The C of CRUD - Create operation
@@ -41,10 +41,11 @@ class SkillRepository extends AbstractRepository {
     return rows[0];
   }
 
-  async readAll() {
+  async readAllByUser(id) {
     // Execute the SQL SELECT query to retrieve all skills from the "skill" table
     const [rows] = await this.database.query(
-      `SELECT u.id, u.skillname, u.profile_picture, u.location, GROUP_CONCAT(s.name SEPARATOR ', ') AS skills FROM ${this.table} as u inner join skillskills as us on u.id = us.skill_id inner join skills as s on s.id = us.skill_id where is_connected = 0 group by u.id`
+      `SELECT s.*, us.level, us.experience_years FROM ${this.table} AS s INNER JOIN userskills AS us ON s.id = us.skill_id WHERE us.user_id = ?`,
+      [id]
     );
 
     // Return the array of skills

@@ -5,7 +5,7 @@ const tables = require("../../database/tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all skills from the database
-    const skills = await tables.skill.readAll();
+    const skills = await tables.skill.readAllByUser(req.query.id);
 
     // Respond with the skills in JSON format
     res.json(skills);
