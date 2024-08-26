@@ -38,6 +38,7 @@ function ProfileForm({ user, close }) {
           value={profil.username}
           name="username"
           type="text"
+          required
         />
       </label>
       <label>
@@ -47,6 +48,7 @@ function ProfileForm({ user, close }) {
           value={profil.email}
           name="email"
           type="email"
+          required
         />
       </label>
       <label>
@@ -56,6 +58,7 @@ function ProfileForm({ user, close }) {
           value={profil.bio}
           name="bio"
           type="text"
+          required
         />
       </label>
       <label>
@@ -65,6 +68,7 @@ function ProfileForm({ user, close }) {
           value={profil.location}
           name="location"
           type="text"
+          required
         />
       </label>
       <button className="button" type="submit">

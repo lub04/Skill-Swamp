@@ -20,3 +20,9 @@
     height: 7rem;
   }
 }
+@media screen and (max-width: 391px) {
+  .profile-form {
+    justify-content: flex-start;
+    margin-top: 2rem;
+  }
+}

@@ -38,6 +38,7 @@ function SkillForm({ id, close, setSkills }) {
           value={skill.name}
           name="name"
           type="text"
+          required
         />
       </label>
       <label>
@@ -47,6 +48,7 @@ function SkillForm({ id, close, setSkills }) {
           value={skill.level}
           name="level"
           type="text"
+          required
         />
       </label>
       <label>
@@ -55,6 +57,7 @@ function SkillForm({ id, close, setSkills }) {
           onChange={handleChange}
           value={skill.description}
           name="description"
+          required
         />
       </label>
       <label>
@@ -64,9 +67,12 @@ function SkillForm({ id, close, setSkills }) {
           value={skill.experience_years}
           name="experience_years"
           type="number"
+          required
         />
       </label>
-      <button type="submit">Valider</button>
+      <button className="button" type="submit">
+        Valider
+      </button>
     </form>
   );
 }

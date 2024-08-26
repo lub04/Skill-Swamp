@@ -67,7 +67,7 @@ function SkillCard({ skill, setSkills, user }) {
             className="button button-delete"
             onClick={handleDelete}
           >
-            Delete
+            Suprimer
           </button>
         ) : (
           ""

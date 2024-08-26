@@ -7,52 +7,40 @@
   padding: 0;
   box-sizing: border-box;
 
-  /* Couleur principales */
-  --primary-color: #029707; /* Vert nature */
-  --secondary-color: #ffc107; /* Jaune vif */
-  --tertiary-color: #03a9f4; /* Bleu clair */
+  --primary-color: #029707;
+  --secondary-color: #ffc107;
+  --tertiary-color: #03a9f4;
 
-  /* Couleurs neutres */
-  --text-primary: #212121; /* Noir profond */
-  --text-secondary: #757575; /* Gris foncé */
-  --background-light: rgba(250, 250, 250, 0.85); /* Blanc cassé */
-  --border-color: #e0e0e0; /* Gris clair */
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --background-light: rgba(250, 250, 250, 0.85);
+  --border-color: #e0e0e0;
 
-  /* Couleurs normales */
   --white: #ffffff;
   --black: #000000;
-  --disabled-bg: #e0e0e0; /* Pour les éléments désactivés */
+  --disabled-bg: #e0e0e0;
   --disabled-text: #757575;
-
-  /* Transitions */
   --transition-duration: 0.3s;
   --transition-timing-function: ease-in-out;
 
-  /* Polices */
-  --font-primary: "Montserrat", sans-serif; /* Pour les titres */
-  --font-secondary: "Roboto", sans-serif; /* Pour le corps de texte */
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Roboto", sans-serif;
 
-  /* Tailles de police en rem */
-  --font-size-h1: 5rem; /* Titre principal (36px) */
-  --font-size-h2: 1.5rem; /* Sous-titre (28px) */
-  --font-size-body: 1rem; /* Texte principal (16px) */
-  --font-size-secondary: 0.875rem; /* Texte secondaire (14px) */
+  --font-size-h1: 5rem;
+  --font-size-h2: 1.5rem;
+  --font-size-body: 1rem;
+  --font-size-secondary: 0.875rem;
 
-  /* Poids de police */
-  --font-weight-normal: 400; /* Poids normal */
-  --font-weight-bold: 700; /* Poids gras */
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
 
-  /* Hauteur de ligne */
   --line-height-normal: 1.5;
 
-  /* Espacement des lettres */
   --letter-spacing-normal: 0;
 
-  /* Bordures */
   --border-main: 2px solid var(--primary-color);
   --border-secondary: 2px solid var(--secondary-color);
 
-  /* Coins arrondis (Border Radius) */
   --border-radius-small: 4px;
   --border-radius-medium: 8px;
   --border-radius-large: 16px;
@@ -72,6 +60,7 @@
   height: 3rem;
   font-size: 1.5rem;
   padding: 1rem;
+  cursor: pointer;
 }
 
 .button:hover {
@@ -165,4 +154,25 @@ body {
 }
 .button-delete {
   margin: auto;
+}
+
+@media screen and (max-width: 391px) {
+  body {
+    height: 100lvh;
+    background-image: url("./assets/images/abstract-yellow-greeting-wall-texture.jpg");
+    background-size: cover;
+  }
+  .Modal-skill {
+    top: 20%;
+    left: 10%;
+    right: 10%;
+    bottom: 25%;
+  }
+  .Modal {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    bottom: 15%;
+  }
 }

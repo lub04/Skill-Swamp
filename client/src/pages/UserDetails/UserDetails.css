@@ -23,3 +23,20 @@
     }
   }
 }
+
+@media screen and (max-width: 391px) {
+  .details-user {
+    width: 90%;
+    .identity-contact {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .img-contact {
+        width: 60%;
+      }
+      .name-bio {
+        width: 90%;
+      }
+    }
+  }
+}
