@@ -25,7 +25,7 @@ class UserRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await this.database.query(
-      `SELECT u.id, u.username, u.email, u.profile_picture, u.bio, u.location, u.created_at, u.updated_at, GROUP_CONCAT(concat(s.name, ': ', s.description ) SEPARATOR '; ') AS skills FROM ${this.table} as u inner join userskills as us on u.id = us.user_id inner join skills as s on s.id = us.skill_id where u.id = ? group by u.id`,
+      `SELECT u.id, u.username, u.email, u.profile_picture, u.bio, u.location, c.balance FROM ${this.table} as u INNER JOIN credits AS c ON u.id = c.user_id where u.id = ? `,
       [id]
     );
 
@@ -35,9 +35,8 @@ class UserRepository extends AbstractRepository {
 
   async readMine() {
     const [rows] = await this.database.query(
-      `SELECT u.id, u.username, u.email, u.profile_picture, u.bio, u.location, u.created_at, u.updated_at, u.is_connected FROM ${this.table} AS u WHERE u.is_connected = 1 ;`
+      `SELECT u.id, u.username, u.email, u.profile_picture, u.bio, u.location, u.created_at, u.updated_at, u.is_connected, c.balance FROM ${this.table} AS u INNER JOIN credits AS c ON u.id = c.user_id WHERE u.is_connected = 1 ;`
     );
-
     return rows[0];
   }
 

@@ -10,6 +10,8 @@
   .identity-contact {
     display: flex;
     justify-content: space-between;
+    width: 95%;
+    margin: auto;
     .img-contact {
       display: flex;
       flex-direction: column;

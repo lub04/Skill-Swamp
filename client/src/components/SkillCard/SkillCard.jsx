@@ -5,7 +5,7 @@ import Modal from "react-modal";
 import connexion from "../../services/connexion";
 import "./SkillCard.css";
 
-function SkillCard({ skill, setSkills, user }) {
+function SkillCard({ skill, setSkills, user, handleReserve }) {
   const [modalState, setModalState] = useState({});
 
   const openModal = (skillId) => {
@@ -70,7 +70,13 @@ function SkillCard({ skill, setSkills, user }) {
             Suprimer
           </button>
         ) : (
-          ""
+          <button
+            type="button"
+            className="button button-delete"
+            onClick={handleReserve}
+          >
+            Réserver !
+          </button>
         )}
       </Modal>
     </div>

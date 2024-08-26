@@ -1,18 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { SkillSwampProvider } from "./context/SkillSwampContext";
 
 import App from "./App";
 import AllUsers from "./pages/AllUsers/AllUsers";
 import UserDetails from "./pages/UserDetails/UserDetails";
 import connexion from "./services/connexion";
 import MyProfile from "./pages/MyProfile/MyProfile";
+import Home from "./pages/Home/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "",
+        element: <Home />,
+      },
       {
         path: "utilisateurs",
         element: <AllUsers />,
@@ -57,6 +63,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <SkillSwampProvider>
+      <RouterProvider router={router} />
+    </SkillSwampProvider>
   </React.StrictMode>
 );

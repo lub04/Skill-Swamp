@@ -214,17 +214,17 @@ VALUES
 
 INSERT INTO Credits (user_id, balance)
 VALUES
-(1, 100.00), -- Solde initial de 100.00 pour Jean Dupont
-(2, 150.00), -- Solde initial de 150.00 pour Marie Durand
-(3, 200.00), -- Solde initial de 200.00 pour Luc Martin
-(4, 120.00), -- Solde initial de 120.00 pour Sophie Legrand
-(5, 180.00); -- Solde initial de 180.00 pour Paul Brun
+(1, 100), -- Solde initial de 100 pour Jean Dupont
+(2, 150), -- Solde initial de 150 pour Marie Durand
+(3, 200), -- Solde initial de 200 pour Luc Martin
+(4, 120), -- Solde initial de 120 pour Sophie Legrand
+(5, 180); -- Solde initial de 180 pour Paul Brun
 
 INSERT INTO UserSkills (user_id, skill_id, level, experience_years)
-VALUES 
+VALUES
 (6, 1, 'Avancé', 5),  -- Lubin -> Développement Web
 (6, 2, 'Intermédiaire', 3), -- Lubin -> Intelligence Artificielle
 (6, 3, 'Débutant', 1);  -- Lubin -> Cybersécurité
 
 INSERT INTO Credits (user_id, balance)
-VALUES (6, 150.00); -- Solde initial de 150.00 crédits pour Lubin
+VALUES (6, 150); -- Solde initial de 150 crédits pour Lubin

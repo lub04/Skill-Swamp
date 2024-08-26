@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-bind */
-import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 
+import { useSkillSwamp } from "../../context/SkillSwampContext";
 import connexion from "../../services/connexion";
 import "./MyProfile.css";
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
@@ -12,23 +12,36 @@ import SkillForm from "../../components/SkillForm/SkillForm";
 Modal.setAppElement("#root");
 
 function MyProfile() {
-  const user = useLoaderData();
   const [skills, setSkills] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [addSkillModalIsOpen, setAddSkillModalIsOpen] = useState(false);
+  const { connectedUser, setConnectedUser } = useSkillSwamp();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await connexion.get(`api/users/mine`);
+        setConnectedUser(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const response = await connexion.get(`api/skills?id=${user.id}`);
+        const response = await connexion.get(
+          `api/skills?id=${connectedUser.id}`
+        );
         setSkills(response.data);
       } catch (error) {
         console.error(error);
       }
     };
-
     fetchSkills();
-  }, [user.id]);
+  }, [connectedUser.id]);
 
   function openModal() {
     setIsOpen(true);
@@ -50,13 +63,17 @@ function MyProfile() {
     <div className="details-user">
       <section className="identity-contact">
         <div className="img-contact">
-          <img src={user.profile_picture} alt={user.username} />
-          <p>{user.email}</p>
-          <small>{user.location}</small>
+          <img
+            src={connectedUser.profile_picture}
+            alt={connectedUser.username}
+          />
+          <p>{connectedUser.email}</p>
+          <small>{connectedUser.location}</small>
+          <p className="button2">Crédits :{connectedUser.balance}</p>
         </div>
         <div className="name-bio">
-          <h2>{user.username}</h2>
-          <p>{user.bio}</p>
+          <h2>{connectedUser.username}</h2>
+          <p>{connectedUser.bio}</p>
         </div>
       </section>
 
@@ -67,7 +84,7 @@ function MyProfile() {
               key={skill.id}
               skill={skill}
               setSkills={setSkills}
-              user={user}
+              user={connectedUser}
             />
           ))
         ) : (
@@ -93,7 +110,7 @@ function MyProfile() {
           X
         </button>
         <h2>Modifier le profil</h2>
-        <ProfileForm user={user} close={closeModal} />
+        <ProfileForm user={connectedUser} close={closeModal} />
       </Modal>
 
       <Modal
@@ -113,7 +130,7 @@ function MyProfile() {
         <h2>Ajouter une compétence</h2>
         <SkillForm
           close={closeAddSkillModal}
-          id={user.id}
+          id={connectedUser.id}
           setSkills={setSkills}
         />
       </Modal>
