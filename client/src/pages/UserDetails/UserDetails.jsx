@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import SkillCard from "../../components/SkillCard/SkillCard";
 
@@ -38,15 +40,56 @@ function UserDetails() {
     fetchConnectedUser();
   }, []);
 
-  const handleReserve = () => {
-    setConnectedUser((prev) => ({
-      ...prev,
-      balance: connectedUser.balance - 10,
-    }));
-    setUser((prev) => ({
-      ...prev,
-      balance: user.balance + 10,
-    }));
+  const handleReserve = async () => {
+    try {
+      if (connectedUser.balance >= 10) {
+        const newConnectedUserBalance = connectedUser.balance - 10;
+        const newUserBalance = user.balance + 10;
+        setConnectedUser((prev) => ({
+          ...prev,
+          balance: newConnectedUserBalance,
+        }));
+        setUser((prev) => ({
+          ...prev,
+          balance: newUserBalance,
+        }));
+        await connexion.put(`/api/credits/${connectedUser.id}`, {
+          balance: newConnectedUserBalance,
+        });
+        await connexion.put(`/api/credits/${user.id}`, {
+          balance: newUserBalance,
+        });
+        toast.success(
+          `Votre réservation est validée par ${user.username} vous venez de lui envoyer 10 crédits. Il vous reste encore ${newConnectedUserBalance} crédits.`,
+          {
+            position: "bottom-center",
+            autoClose: 8000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+        );
+      } else {
+        toast.error(
+          `Vous n'avez pas suffisamment de crédits pour réserver une compétence chez ${user.username}, il serait temps de partager vos compétences avec d'autres utilisateurs pour recharger vos crédits !`,
+          {
+            position: "bottom-center",
+            autoClose: 8000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+        );
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <div className="details-user">
@@ -72,6 +115,7 @@ function UserDetails() {
           />
         ))}
       </section>
+      <ToastContainer />
     </div>
   );
 }
