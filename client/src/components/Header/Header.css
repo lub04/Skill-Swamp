@@ -12,20 +12,17 @@ header {
     flex-direction: column;
     gap: 2rem;
     margin-left: 5rem;
+    width: 12rem;
+    a {
+      width: 10rem;
+    }
   }
-  .title-logo {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 30rem;
-    height: 100%;
 
-    h1 {
-      width: 18rem;
-    }
-    img {
-      width: 22rem;
-      max-height: 100%;
-    }
+  h1 {
+    width: 12rem;
+  }
+  img {
+    width: 12rem;
+    max-height: 100%;
   }
 }

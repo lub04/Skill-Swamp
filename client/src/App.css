@@ -145,8 +145,8 @@ body {
 .Modal {
   position: absolute;
   top: 5%;
-  left: 10%;
-  right: 10%;
+  left: 30%;
+  right: 30%;
   bottom: 5%;
   background-image: url(./assets/images/abstract-yellow-greeting-wall-texture.jpg);
   background-size: cover;

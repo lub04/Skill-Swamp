@@ -17,10 +17,8 @@ function Header() {
           Profil
         </Link>
       </nav>
-      <div className="title-logo">
-        <h1>Skill Swap</h1>
-        <img src={logo} alt="logo" />
-      </div>
+      <h1>Skill Swap</h1>
+      <img src={logo} alt="logo" />
     </header>
   );
 }
