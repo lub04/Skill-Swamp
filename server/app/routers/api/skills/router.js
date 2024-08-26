@@ -15,6 +15,7 @@ const {
   edit,
   destroy,
 } = require("../../../controllers/skillActions");
+const validateSkill = require("../../../services/validateSkill");
 
 router.get("/mine", readOne);
 // Route to get a list ofskills
@@ -24,7 +25,7 @@ router.get("/", browse);
 router.get("/:id", read);
 
 // Route to add a newskill
-router.post("/", add);
+router.post("/", validateSkill, add);
 
 router.put("/:id", edit);
 

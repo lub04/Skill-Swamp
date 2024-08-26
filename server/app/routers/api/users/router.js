@@ -14,6 +14,7 @@ const {
   readOne,
   edit,
 } = require("../../../controllers/userActions");
+const validateUser = require("../../../services/validateUser");
 
 router.get("/mine", readOne);
 // Route to get a list ofusers
@@ -25,7 +26,7 @@ router.get("/:id", read);
 // Route to add a newuser
 router.post("/", add);
 
-router.put("/:id", edit);
+router.put("/:id", validateUser, edit);
 
 /* ************************************************************************* */
 

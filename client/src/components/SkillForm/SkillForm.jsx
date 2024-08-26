@@ -18,6 +18,7 @@ function SkillForm({ id, close, setSkills }) {
       [name]: value,
     }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+import { useSkillSwamp } from "../../context/SkillSwampContext";
 import connexion from "../../services/connexion";
 import "./ProfileForm.css";
 
 function ProfileForm({ user, close }) {
-  const navigate = useNavigate();
+  const { setConnectedUser, connectedUser } = useSkillSwamp();
   const [profil, setProfil] = useState({
     username: user.username,
     email: user.email,
@@ -22,7 +23,8 @@ function ProfileForm({ user, close }) {
     e.preventDefault();
     try {
       await connexion.put(`/api/users/${user.id}`, profil);
-      navigate(".", { replace: true });
+      const newProfile = await connexion.get(`/api/users/${user.id}`);
+      setConnectedUser({ ...connectedUser, ...newProfile.data });
       close();
     } catch (error) {
       console.error(error);
