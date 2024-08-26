@@ -3,20 +3,13 @@ const express = require("express");
 const router = express.Router();
 
 /* ************************************************************************* */
-// Import And Use Routers Here
+// Define Your API Routes Here
 /* ************************************************************************* */
 
-const usersRouter = require("./users/router");
+// Importcredits-related actions
+const { edit } = require("../../../controllers/creditActions");
 
-router.use("/users", usersRouter);
-
-const skillsRouter = require("./skills/router");
-
-router.use("/skills", skillsRouter);
-
-const creditsRouter = require("./credits/router");
-
-router.use("/credits", creditsRouter);
+router.put("/:id", edit);
 
 /* ************************************************************************* */
 
